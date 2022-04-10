@@ -9,7 +9,7 @@ import {chain} from 'mathjs';
 export enum BINARY {
   SIDE_TOP_LEFT = 0b0_000000_000001,
   SIDE_TOP_RIGHT = 0b0_000000_000010,
-  SIDE_RIGHT = 0b0_000000_000100,
+  // SIDE_RIGHT = 0b0_000000_000100,
   SIDE_BOTTOM_RIGHT = 0b0_000000_001000,
   SIDE_BOTTOM_LEFT = 0b0_000000_010000,
   SIDE_LEFT = 0b0_000000_100000,
@@ -25,7 +25,7 @@ export enum BINARY {
 export enum TEXT {
   SIDE_TOP_LEFT = 'a',
   SIDE_TOP_RIGHT = 'b',
-  SIDE_RIGHT = 'c',
+  // SIDE_RIGHT = 'c',
   SIDE_BOTTOM_RIGHT = 'd',
   SIDE_BOTTOM_LEFT = 'e',
   SIDE_LEFT = 'f',
@@ -41,7 +41,7 @@ export enum TEXT {
 export const TEXT_LOOKUP = new Map([
   ['a', BINARY.SIDE_TOP_LEFT],
   ['b', BINARY.SIDE_TOP_RIGHT],
-  ['c', BINARY.SIDE_RIGHT],
+  // ['c', BINARY.SIDE_RIGHT],
   ['d', BINARY.SIDE_BOTTOM_RIGHT],
   ['e', BINARY.SIDE_BOTTOM_LEFT],
   ['f', BINARY.SIDE_LEFT],
@@ -127,7 +127,7 @@ export function textToPhrase(text: string): TunicPhrase {
   const res: TunicPhrase = [];
   for (const word of text.split(/,/)) {
     const tunicWord: TunicWord = [];
-    for (const char of word.split(/ +/)) {
+    for (const char of word.split(/ /)) {
       tunicWord.push(textToChar(char))
     }
     res.push(tunicWord);
@@ -269,10 +269,10 @@ export function drawChar(ctx: CanvasRenderingContext2D, char: TunicChar, config:
   if (char & BINARY.SIDE_TOP_RIGHT) {
     line(top_right, top);
   }
-  if (char & BINARY.SIDE_RIGHT) {
-    line(top_right, center_right);
-    line(center_right_bottom, bottom_right);
-  }
+  // if (char & BINARY.SIDE_RIGHT) {
+  //   line(top_right, center_right);
+  //   line(center_right_bottom, bottom_right);
+  // }
   if (char & BINARY.SIDE_BOTTOM_RIGHT) {
     line(bottom_right, bottom);
   }
@@ -297,6 +297,7 @@ export function drawChar(ctx: CanvasRenderingContext2D, char: TunicChar, config:
   }
   if (char & BINARY.CORNER_BOTTOM) {
     line(bottom, center_bottom);
+    line(center, center_top);
   }
   if (char & BINARY.CORNER_BOTTOM_LEFT) {
     line(bottom_left, center_bottom);
