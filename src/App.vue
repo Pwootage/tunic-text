@@ -1,7 +1,8 @@
 <template>
   <div class="app-container">
-    <ContextSelector />
     <TunicText :phrase="phrase"/>
+
+    <ContextSelector />
     <!--      <TunicText :phrase="phrase" :mode="'hex'"/>-->
     <!--      <TunicText :phrase="phrase" :letterSize="40"/>-->
     <!--      <TunicText :phrase="phrase" :letterSize="10"/>-->
