@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <div class="app-container">
+    <ContextSelector />
     <TunicText :phrase="phrase"/>
     <!--      <TunicText :phrase="phrase" :mode="'hex'"/>-->
     <!--      <TunicText :phrase="phrase" :letterSize="40"/>-->
@@ -21,6 +22,7 @@ import {TEST_PHRASE} from './utils/tunic';
 import {ref} from 'vue';
 import TunicText from './components/TunicText.vue';
 import TunicTextEditor from "@/components/TunicTextEditor.vue";
+import ContextSelector from "@/components/ContextSelector.vue";
 
 const phrase = ref(TEST_PHRASE);
 </script>
@@ -31,6 +33,15 @@ const phrase = ref(TEST_PHRASE);
 body {
   display: flex;
   place-items: center;
+  flex-flow: column;
+  flex-direction: column;
+}
+
+.app-container {
+  display: flex;
+  place-items: center;
+  flex-flow: column;
+  flex-direction: column;
 }
 
 #app {
