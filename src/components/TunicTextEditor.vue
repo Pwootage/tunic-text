@@ -9,6 +9,15 @@
 import {computed, ref, watch} from "vue";
 import TunicText from './TunicText.vue';
 import {TEXT, textClean, textToPhrase} from "@/utils/tunic";
+import type {TunicPhrase} from "@/utils/tunic";
+
+const props = defineProps<{
+  modelValue: TunicPhrase
+}>();
+
+const emit = defineEmits<{
+  (e: 'update:modelValue', modelValue: TunicPhrase): void
+}>();
 
 let $textPhrase = ref('');
 const textPhrase = computed<string>(
